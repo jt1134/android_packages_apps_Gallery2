@@ -226,6 +226,14 @@ public abstract class ActivityBase extends AbstractGalleryActivity
         return true;
     }
 
+    protected void initPowerShutter() {
+        if (mShowCameraAppView) {
+            getWindow().addFlags(WindowManager.LayoutParams.PREVENT_POWER_KEY);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.PREVENT_POWER_KEY);
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

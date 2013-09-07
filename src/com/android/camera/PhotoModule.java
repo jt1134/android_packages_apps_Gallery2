@@ -423,6 +423,8 @@ public class PhotoModule
 
         mContentResolver = mActivity.getContentResolver();
 
+        mActivity.initPowerShutter();
+
         // To reduce startup time, open the camera and start the preview in
         // another thread.
         mCameraStartUpThread = new CameraStartUpThread();
@@ -1357,6 +1359,7 @@ public class PhotoModule
 
     @Override
     public void updateCameraAppView() {
+        mActivity.initPowerShutter();
     }
 
     @Override
@@ -1619,6 +1622,7 @@ public class PhotoModule
             }
             return false;
         case KeyEvent.KEYCODE_CAMERA:
+        case KeyEvent.KEYCODE_POWER:
             if (mFirstTimeInitialized && event.getRepeatCount() == 0) {
                 onShutterButtonClick();
             }
